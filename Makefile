@@ -1,3 +1,9 @@
+all: posix_getres timer_usleep timer_mod_FIFO
+
+clean:
+	rm -f out
+	mkdir out
+
 posix_getres: src/posix_getres.c
 	gcc -o ./out/posix_getres src/posix_getres.c
 
