@@ -43,12 +43,14 @@ int main(int argc, char** argv)
     }
 
     if(argc == 4) {
-        // Provides an option to print the CSV 
-        // actual_time, expected_time, pid, niceness, delay, iterations
-        printf("%lf, %d, %d, %d, %d, %d\n", (stop - init) * 1000, num_iter*delay, pid, priority, delay, num_iter);
+        // Print values to CSV
+        // actual_time, expected_time, pid, niceness, delay, iterations, total 		   delay
+        printf("%lf, %d, %d, %d, %d, %d, %lf\n", (stop - init) * 1000, num_iter*delay, pid, priority, delay, num_iter, ((stop-init) * 1000) - (num_iter*delay));
     }
 
-    printf("Total time taken: actual %lf theory (excl. runtime): %d ms, %d \n", (stop - init) * 1000, num_iter * delay, getpid());
-    
+    if(argc == 3) {
+	printf("Actual time taken: %lf, Theoretical time taken (excl. runtime): %d ms, %d \n", (stop - init) * 1000, num_iter * delay, getpid());
+    }
+
     return 0;
 }
